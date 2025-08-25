@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>複数LINEログインデモ</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    button {
+      width: 100%; padding: 12px 16px; border: none; border-radius: 12px; cursor: pointer;
+      background: #06c755; color: #fff; font-weight: 700; font-size: 16px;
+    }
+    .card { border: 1px solid #eee; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+    .muted { color:#666; font-size: 12px; margin-top: 6px;}
+  </style>
+</head>
+<body>
+  <h1>複数のLINEログインボタン</h1>
+  <p>押したボタンに紐づくチャネルでLINEログインが始まり、そのチャネルに連携済みの公式アカウントの友だち追加が促されます。</p>
+
+  <!-- server.js側の設定とキー名（a/b/c）を一致させる -->
+  <div class="grid">
+    <div class="card">
+      <h3>テスト株式会社◯◯◯店</h3>
+      <p class="muted">チャネル「テスト株式会社◯◯◯店」でログイン</p>
+      <button onclick="location.href='https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2005951263&redirect_uri=https%3A%2F%2Fexample.com%2Fauth%3Fkey%3Dvalue&state=12345abcde&scope=profile%20openid&bot_prompt=normal'">LINEでログイン（◯◯◯店）</button>
+    </div>
+    <div class="card">
+      <h3>テスト株式会社×××店</h3>
+      <p class="muted">チャネル「テスト株式会社×××店」でログイン</p>
+      <button onclick="location.href='https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2007986151&redirect_uri=https%3A%2F%2Fexample.com%2Fauth%3Fkey%3Dvalue&state=12345abcde&scope=profile%20openid&bot_prompt=normal'">LINEでログイン（×××店）</button>
+    </div>
+    <div class="card">
+      <h3>テスト株式会社△△△店</h3>
+      <p class="muted">チャネル「テスト株式会社△△△店」でログイン</p>
+      <button onclick="location.href='https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1657892918&redirect_uri=https%3A%2F%2Fexample.com%2Fauth%3Fkey%3Dvalue&state=12345abcde&scope=profile%20openid&bot_prompt=normal'">LINEでログイン（△△△店）</button>
+    </div>
+  </div>
+</body>
+</html>
